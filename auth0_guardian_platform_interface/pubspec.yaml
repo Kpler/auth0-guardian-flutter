@@ -1,6 +1,6 @@
 name: auth0_guardian_platform_interface
 description: "A common platform interface for the auth0_flutter plugin."
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/Kpler/auth0-guardian-flutter/tree/main/auth0_guardian_platform_interface
 issue_tracker: https://github.com/Kpler/auth0-guardian-flutter/issues
 topics: 
@@ -15,7 +15,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  plugin_platform_interface: ^2.1.8
   
 dev_dependencies:
   flutter_test:

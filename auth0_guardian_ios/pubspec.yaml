@@ -1,6 +1,6 @@
 name: auth0_guardian_ios
 description: "iOS implementation of the auth0_guardian plugin."
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/Kpler/auth0-guardian-flutter/tree/main/auth0_guardian_ios
 issue_tracker: https://github.com/Kpler/auth0-guardian-flutter/issues
 topics: 
@@ -15,8 +15,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  auth0_guardian_platform_interface: ^0.1.0
-  plugin_platform_interface: ^2.0.2
+  auth0_guardian_platform_interface: ^0.1.1
+  plugin_platform_interface: ^2.1.8
 
 dev_dependencies:
   flutter_test:
