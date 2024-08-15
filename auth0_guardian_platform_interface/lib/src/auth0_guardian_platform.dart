@@ -38,7 +38,7 @@ abstract class Auth0GuardianPlatform extends PlatformInterface {
   }
 
   /// Creates a new [PlatformDevice].
-  /// 
+  ///
   /// This function should only be called by the app-facing package.
   /// Look at using [PlatformDevice] in `auth0_guardian` instead.
   PlatformDevice createPlatformDevice(

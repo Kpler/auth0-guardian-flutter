@@ -2,7 +2,7 @@ import 'package:auth0_guardian_platform_interface/auth0_guardian_platform_interf
 
 class Guardian {
   /// Main constructor for creating a [Guardian] instance.
-  /// 
+  ///
   /// The [tenantUrl] should be the URL of the tenant to use and respect this format:
   /// `https://<YOUR_TENANT>/appliance-mfa`.
   Guardian({
