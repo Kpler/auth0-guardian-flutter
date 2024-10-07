@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:auth0_guardian/auth0_guardian.dart';
-import 'package:auth0_guardian_example/firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +40,9 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
   /// Gets the notification token from the device.
   void setNotificationToken() async {
     // Initialize Firebase.
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
 
     // Check for permission.
     await FirebaseMessaging.instance.requestPermission();
