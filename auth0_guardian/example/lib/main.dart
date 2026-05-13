@@ -30,6 +30,13 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
   /// The notification token from the device.
   String? notificationToken;
 
+  /// The TOTP code generated from guardian.
+  String? totpCode;
+
+  /// The secret enrollment code used to generate the TOTP code.
+  /// This is a sample that should work fine
+  String? enrollmentCode = 'KNAGGJK2PFUCS63SPBAHARDZPU4XWQ2A';
+
   /// The enrollment URI.
   String? enrollUri;
 
@@ -75,6 +82,12 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
             ),
           );
         });
+  }
+
+  void generateTOTP() {
+    guardian
+        .generateTOTP(enrollmentCode: enrollmentCode!)
+        .then((value) => setState(() => totpCode = value));
   }
 
   /// Enrolls the user with Guardian.
@@ -281,7 +294,30 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
                         const SizedBox(height: 8),
                         Text(latestNotification?.data.toString() ?? ''),
                       ],
-                    )
+                    ),
+                  const Divider(),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'TOTP Flow:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  TextFormField(
+                    initialValue: enrollmentCode,
+                    decoration: InputDecoration(
+                      labelText: 'TOTP Enrollment Coode',
+                      suffix: IconButton(
+                        onPressed: generateTOTP,
+                        icon: const Icon(Icons.chevron_right),
+                      ),
+                    ),
+                    onChanged: (value) =>
+                        setState(() => enrollmentCode = value),
+                  ),
+                  _TextLine(label: 'TOTP Code', value: totpCode ?? ''),
                 ],
               ),
             );

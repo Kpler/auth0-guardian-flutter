@@ -75,4 +75,14 @@ class AndroidGuardian extends PlatformGuardian {
     );
     return result ?? false;
   }
+
+  @override
+  Future<String> generateTOTP({required String enrollmentCode}) async {
+    final result = await methodChannel.invokeMethod<String>(
+      'generateTOTP',
+      {'enrollmentCode': enrollmentCode},
+    );
+    if (result == null) throw PlatformException(code: 'No code generated');
+    return result;
+  }
 }

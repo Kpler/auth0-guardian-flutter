@@ -70,6 +70,11 @@ class Guardian {
     );
   }
 
+  /// {@macro auth0_guardian_platform_interface.PlatformGuardian.generateTOTP}
+  Future<String> generateTOTP({required String enrollmentCode}) async {
+    return await platform.generateTOTP(enrollmentCode: enrollmentCode);
+  }
+
   /// Returns the platform specific device API for a given device.
   ///
   /// This is used to interact with a specific device.
