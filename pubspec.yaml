@@ -1,0 +1,12 @@
+name: auth0_guardian_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+workspace:
+  - auth0_guardian
+  - auth0_guardian/example
+  - auth0_guardian_android
+  - auth0_guardian_ios
+  - auth0_guardian_platform_interface

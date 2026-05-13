@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:push/push.dart' as push;
 
 /// The domain to use to test the enrollment.
@@ -59,15 +59,22 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
   }
 
   /// Scans a barcode to get the enrollment URI.
-  void scanBarcode() {
-    FlutterBarcodeScanner.scanBarcode(
-      "#ff6666",
-      'Cancel',
-      false,
-      ScanMode.QR,
-    ).then((qr) {
-      setState(() => enrollUri = Uri.decodeFull(qr));
-    });
+  void scanBarcode(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Scaffold(
+            body: MobileScanner(
+              onDetect: (result) {
+                print(result.barcodes.first.rawValue);
+                if (result.barcodes.first.rawValue != null) {
+                  setState(() => enrollUri =
+                      Uri.decodeFull(result.barcodes.first.rawValue!));
+                }
+              },
+            ),
+          );
+        });
   }
 
   /// Enrolls the user with Guardian.
@@ -193,7 +200,7 @@ class _GuardianExampleAppState extends State<GuardianExampleApp> {
                   const Divider(),
                   const SizedBox(height: 4),
                   ElevatedButton(
-                    onPressed: scanBarcode,
+                    onPressed: () => scanBarcode(context),
                     child: const Text('Step 1: Scan QR code'),
                   ),
                   const SizedBox(height: 8),
