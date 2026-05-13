@@ -34,6 +34,7 @@ class GuardianFlutter : MethodCallHandler {
             "acceptRequest" -> acceptRequest(args, result)
             "rejectRequest" -> rejectRequest(args, result)
             "isGuardianNotification" -> isGuardianNotification(args, result)
+            "generateTOTP" -> generateTOTPCode(args, result)
             else -> result.notImplemented()
         }
     }
@@ -181,6 +182,23 @@ class GuardianFlutter : MethodCallHandler {
                             "GuardianFlutter.isGuardianNotification() thrown an unexpected error"
                     ),
                     exception.message
+            )
+        }
+    }
+
+    private fun generateTOTPCode(args: Map<String, Any>, result: MethodChannel.Result) {
+        try {
+            val generator = LoginCodeGenerator()
+            val enrollmentCode = args["enrollmentCode"] as String
+            val code = generator.getCode(enrollmentCode)
+            result.success(code)
+        } catch (exception: Exception) {
+            result.error(
+                "UnexpectedError",
+                getGuardianErrorMessage(
+                    "GuardianFlutter.generateCode() thrown an unexpected error"
+                ),
+                exception.message
             )
         }
     }
