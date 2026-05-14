@@ -1,9 +1,10 @@
 name: auth0_guardian_example
 description: "Demonstrates how to use the auth0_guardian plugin."
 publish_to: 'none'
+resolution: workspace
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ^3.5.0
 
 dependencies:
   flutter:
@@ -13,7 +14,7 @@ dependencies:
     path: ../
   cupertino_icons: ^1.0.6
   # Add the following dependencies to make the example guardian workflow easier.
-  flutter_barcode_scanner:
+  mobile_scanner:
   push:
   firebase_messaging: ^15.0.4
   firebase_core: ^3.3.0

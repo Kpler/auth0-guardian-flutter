@@ -3,13 +3,14 @@ description: "A Flutter plugin that wraps the Auth0 Guardian SDKs and allow an e
 version: 0.1.2
 repository: https://github.com/Kpler/auth0-guardian-flutter/tree/main/auth0_guardian
 issue_tracker: https://github.com/Kpler/auth0-guardian-flutter/issues
+resolution: workspace
 topics: 
   - auth0
   - guardian
   - multi-factor-authentication
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ^3.5.0
   flutter: '>=3.3.0'
 
 dependencies:

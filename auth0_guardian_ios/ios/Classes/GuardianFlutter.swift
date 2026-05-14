@@ -30,6 +30,8 @@ public class GuardianFlutter: NSObject {
       rejectRequest(args: args, result: result)
     case "isGuardianNotification":
       isGuardianNotification(args: args, result: result)
+    case "generateTOTP":
+      generateTOTP(args: args, result: result)
     default:
       result(FlutterMethodNotImplemented)
     }
@@ -151,6 +153,24 @@ public class GuardianFlutter: NSObject {
     let payload = args["notification"] as! [AnyHashable: Any]
     let notification = Guardian.notification(from: payload)
     result(notification != nil)
+  }
+
+  public func generateTOTP(args: [String: Any], result: @escaping FlutterResult) {
+    do {
+      let enrollmentCode = args["enrollmentCode"] as! String
+      let codeGenerator = try Guardian.totp(
+        base32Secret: enrollmentCode,
+        algorithm: .sha1
+      )
+      let code = codeGenerator.code()
+      result(String(code))
+    } catch (let error) {
+      result(
+        getGuardianFlutterError(
+          error, "GuardianFlutter.generateTOTP() throwed an unexpected error"
+        )
+      )
+    }
   }
 
   public func dispose() {

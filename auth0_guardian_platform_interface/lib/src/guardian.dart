@@ -84,4 +84,13 @@ abstract class PlatformGuardian extends PlatformInterface {
       'isGuardianNotification is not implemented on the current platform.',
     );
   }
+
+  /// {@template auth0_guardian_platform_interface.PlatformGuardian.generateTOTP}
+  /// Generates a TOTP code for the given secret.
+  /// {@endtemplate}
+  Future<dynamic> generateTOTP({required String enrollmentCode}) async {
+    throw UnimplementedError(
+      'generateTOTP is not implemented on the current platform.',
+    );
+  }
 }

@@ -3,13 +3,14 @@ description: "A common platform interface for the auth0_flutter plugin."
 version: 0.1.1
 repository: https://github.com/Kpler/auth0-guardian-flutter/tree/main/auth0_guardian_platform_interface
 issue_tracker: https://github.com/Kpler/auth0-guardian-flutter/issues
+resolution: workspace
 topics: 
   - auth0
   - guardian
   - multi-factor-authentication
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ^3.5.0
   flutter: '>=3.3.0'
 
 dependencies:
